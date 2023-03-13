@@ -13,7 +13,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'docker build -t ${params.bookingconf} .'
+                sh 'docker build -t ${params.imagename} .'
             }
         }
         stage('deploy') {
