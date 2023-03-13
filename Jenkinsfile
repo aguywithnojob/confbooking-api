@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('git') {
             steps {
-                git branch: $branch, url: 'https://github.com/aguywithnojob/tmep'
+                git branch: $branch, url: 'https://github.com/aguywithnojob/confbooking-api'
             }
         }
         stage('build') {
