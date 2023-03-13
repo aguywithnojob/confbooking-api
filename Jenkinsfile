@@ -4,7 +4,6 @@ pipeline {
         string(name:'branch',defaultValue:'main')
         string(name:'imagename',defaultValue:'bookingconf')
         string(name:'appname',defaultValue:'bookingconf_service')
-        string(name:'port',defaultValue:'8002')
     }
     stages {
         stage('checkout') {
@@ -19,8 +18,8 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'docker run --name ${params.appname} -d -p ${params.port}:${params.port} $params.bookingconf'
-                sh 'running on 0.0.0.0:${params.port}'
+                sh 'docker run --name ${params.appname} -d -p 8002:8002 $params.bookingconf'
+                sh 'running on 0.0.0.0:8002'
             }
         }
     }
