@@ -9,18 +9,18 @@ pipeline {
     stages {
         stage('git') {
             steps {
-                git branch: $branch, url: 'https://github.com/aguywithnojob/confbooking-api'
+                git branch: $params.branch, url: 'https://github.com/aguywithnojob/confbooking-api'
             }
         }
         stage('build') {
             steps {
-                sh 'docker build -t $bookingconf .'
+                sh 'docker build -t $params.bookingconf .'
             }
         }
         stage('run') {
             steps {
-                sh 'docker run --name $appname -d -p $port:$port $bookingconf'
-                sh 'running on 0.0.0.0:$port'
+                sh 'docker run --name $params.appname -d -p $params.port:$params.port $params.bookingconf'
+                sh 'running on 0.0.0.0:$params.port'
             }
         }
     }
